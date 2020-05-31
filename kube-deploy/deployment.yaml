@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-boot-actuator-demo
+  labels:
+    app: springbootactuator
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: springbootactuator
+  template:
+    metadata:
+      labels:
+        app: springbootactuator
+    spec:
+      containers:
+      - name: springbootactuator
+        image: docker062218/spring-boot-actuator-enabled-demo:v1
+        ports:
+        - name: web
+          containerPort: 8080
